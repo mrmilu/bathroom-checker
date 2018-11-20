@@ -26,7 +26,7 @@ setup(
     author='Alex Left',
     author_email='aizquierdo@mrmilu.com',
     url='',
-    version='0.1',
+    version='0.2',
     entry_points = {
         'console_scripts': ['bathroom-checker=bathroom_checker.bathroom_checker:main'],
     },
