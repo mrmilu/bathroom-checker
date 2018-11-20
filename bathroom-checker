@@ -1,0 +1,31 @@
+#!/usr/bin/env python3
+import pystray
+import requests
+from PIL import Image
+from time import sleep
+from threading import Thread
+
+endpoint = "http://bathroom.mrmilu.com/api/bathroom_updates/1"
+
+def icon_setup(icon):
+    icon.visible = True
+    t = Thread(target=checker, args=(icon,))
+    t.start()
+
+def checker(icon):
+    while True:
+        if is_busy():
+            icon.icon = Image.open("images/busy.jpg")
+        else:
+            icon.icon = Image.open("images/empty.jpg")
+        sleep(1)
+
+def is_busy():
+    request = requests.get(endpoint)
+    data = request.json()
+    return data["occupied"]
+
+if __name__ == "__main__":
+    icon = pystray.Icon('bathroom_icon')
+    icon.icon = Image.open("images/empty.jpg")
+    icon.run(icon_setup)
