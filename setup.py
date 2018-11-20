@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from distutils.core import setup
+from setuptools import setup, find_packages
 import sys
 from pathlib import Path
 
@@ -27,7 +27,12 @@ setup(
     author_email='aizquierdo@mrmilu.com',
     url='',
     version='0.1',
-    scripts=['bathroom-checker'],
+    entry_points = {
+        'console_scripts': ['bathroom-checker=bathroom_checker.bathroom_checker:main'],
+    },
+    packages=["bathroom_checker"],
+    package_data={'bathroom_checker': ['images/*']},
+    include_package_data= True,
     license='GPL-v3',
     long_description=open('README.md').read(),
     install_requires=["pystray", "requests", "pillow"]
