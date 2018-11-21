@@ -6,10 +6,11 @@ from time import sleep
 from threading import Thread
 import os
 
+
 endpoint = "http://bathroom.mrmilu.com/api/bathroom_updates/1"
 resources = {
     "empty": os.path.join(os.path.dirname(__file__), "images/empty.jpg"),
-    "busy" : os.path.join(os.path.dirname(__file__), "images/busy.jpg")
+    "busy": os.path.join(os.path.dirname(__file__), "images/busy.jpg")
 }
 
 def icon_setup(icon):
@@ -30,9 +31,12 @@ def is_busy():
     data = request.json()
     return data["occupied"]
 
+def terminate(icon):
+    os._exit(0)
 
 def main():
-    icon = pystray.Icon('bathroom_icon')
+    icon_menu = pystray.Menu(pystray.MenuItem("Exit", terminate))
+    icon = pystray.Icon('bathroom_icon', menu=icon_menu)
     icon.icon = Image.open(resources["empty"])
     icon.run(icon_setup)
 
