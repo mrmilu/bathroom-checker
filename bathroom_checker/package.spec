@@ -3,6 +3,7 @@
 block_cipher = None
 
 
+
 a = Analysis(['bathroom_checker.py'],
              binaries=[],
              datas=[('images/*', 'images')],
@@ -33,3 +34,7 @@ coll = COLLECT(exe,
                strip=False,
                upx=True,
                name='bathroom_checker')
+app = BUNDLE(exe,
+         name='bathroom_checker.app',
+         icon=None,
+         bundle_identifier=None)

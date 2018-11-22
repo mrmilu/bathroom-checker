@@ -37,5 +37,5 @@ setup(
     include_package_data= True,
     license='GPL-v3',
     long_description=open('README.md').read(),
-    install_requires=["pystray", "requests", "pillow"]
+    install_requires=["pystray", "requests", "pillow", "notify2"]
 )

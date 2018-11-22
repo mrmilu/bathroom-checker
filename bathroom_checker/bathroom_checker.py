@@ -13,8 +13,8 @@ from subprocess import run
 if getattr(sys, 'frozen', False):
     # running in a bundle
     resources = {
-        "empty": "images/empty.jpg",
-        "busy": "images/busy.jpg"
+        "empty": os.path.join(sys._MEIPASS, "images/empty.jpg"),
+        "busy": os.path.join(sys._MEIPASS, "images/busy.jpg")
     }
 
 else:
