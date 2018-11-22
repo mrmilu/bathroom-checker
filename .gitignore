@@ -1,1 +1,4 @@
 .rope*
+build
+dist
+__pycache__
