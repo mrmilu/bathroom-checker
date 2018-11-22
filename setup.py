@@ -23,6 +23,7 @@ if sys.platform == "linux":
         print("Enable to create .desktop script. ¿Are you root?")
 
 setup(
+    python_requires='>=3.4',
     name=APP_NAME,
     description="Tray icon for mrmilu's bathroom-monitor",
     author='Alex Left',
